@@ -21,4 +21,4 @@ Antes de inserir os dados nas tabelas do MySql, foi executado o arquivo com os s
 Após isso, foram criadas as consultas num arquivo para o MySql por nome **teste_3_consultas**, que buscam as informações desejadas.
 
 ## Teste 4
-Possivelmente, não irei conseguir finalizar o teste 4, pois estou com algumas demandas para os próximos dias.
+Possivelmente, não irei conseguir finalizar o teste 4, pois estou com algumas demandas para os próximos dias, mas o prazo citado foi de 7 dias, se não me engano, tenho até o dia 01/04/2025 para finalizar, até lá, irei tentar finalizar, mas desde já, muito obrigado, foi um prazer realizar os desafios.
