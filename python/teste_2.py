@@ -6,7 +6,7 @@ import os
 # Definição dos arquivos
 pdf_file = "downloads/anexo_1.pdf"  # Substitua pelo nome correto do PDF
 csv_file = "Rol_de_Procedimentos.csv"
-zip_file = "Teste_Bruno.zip"  # Substitua pelo seu nome
+zip_file = "Teste_2_csv.zip"  # Substitua pelo seu nome
 
 # Legenda para substituição das abreviações
 substituicoes = {
