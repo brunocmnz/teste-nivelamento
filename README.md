@@ -11,3 +11,8 @@ O código *teste_2.py* faz o compilado dos dados desejados que estão no pdf do 
 
 ## Teste 3
 Foram criados os códigos, baixando os arquivos, descompactando os arquivos baixados e inserindo os dados no MySql. Após isso, foram criadas as consultas no MySql para resultar nos dados desejados.
+Os códigos criados nesse teste foram:
+- *teste_3_download.py :* Faz o download dos arquivos desejados (últimos dois anos, 2023 e 2024) na pasta *downloads_t1*.
+- *teste_3_descompactar.py: * Descompacta os arquivos baixados na pasta *downloads_t1*
+- *teste_3_insert_movimentacoes.py :* Insere os dados obtidos na tabela *movimentos_contabeis*.
+- *teste_3_insert_operadoras.py :* Insere os dados obtidos na tabela *operadoras*.
