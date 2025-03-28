@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-# Imports de compactacao
+# Imports de compactação
 import zipfile
 import os
 
@@ -34,7 +34,7 @@ def compactar_pasta(pasta_origem, zip_destino):
 url = "https://www.gov.br/ans/pt-br/acesso-a-informacao/participacao-da-sociedade/atualizacao-do-rol-de-procedimentos"
 
 # Criar pasta para armazenar os arquivos
-os.makedirs("downloads", exist_ok=True)
+os.makedirs("downloads_t1", exist_ok=True)
 
 # Cabeçalhos para simular um navegador real (evita bloqueios)
 headers = {"User-Agent": "Mozilla/5.0"}
@@ -43,7 +43,7 @@ headers = {"User-Agent": "Mozilla/5.0"}
 response = requests.get(url, headers=headers)
 soup = BeautifulSoup(response.text, "html.parser")
 
-# Variavel contadora para salvar os arquivos
+# Variável contadora para salvar os arquivos
 anexo_atual = 1
 # Encontra os links dos anexos (exemplo: arquivos .pdf)
 for link in soup.find_all("a", href=True):
@@ -56,7 +56,7 @@ for link in soup.find_all("a", href=True):
 
         # Baixa o arquivo
         file_response = requests.get(file_url, headers=headers)
-        with open(f"downloads/{file_name}", "wb") as file:
+        with open(f"downloads_t1/{file_name}", "wb") as file:
             file.write(file_response.content)
 
         print(f"Baixado: {file_name}")
@@ -64,9 +64,9 @@ for link in soup.find_all("a", href=True):
 print("Download concluído!")
 
 # Nome da pasta que será compactada
-pasta_origem = "downloads"
+pasta_origem = "downloads_t1"
 # Nome do arquivo zip
-zip_destino = "arquivos_comprimidos.zip"
+zip_destino = "t1_anexos_comprimidos.zip"
 
 # Chamar a função para compactar
 compactar_pasta(pasta_origem, zip_destino)

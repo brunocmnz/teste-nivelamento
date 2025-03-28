@@ -4,7 +4,7 @@ import zipfile
 import os
 
 # Definição dos arquivos
-pdf_file = "downloads/anexo_1.pdf"  # Substitua pelo nome correto do PDF
+pdf_file = "downloads_t1/anexo_1.pdf"  # Substitua pelo nome correto do PDF
 csv_file = "Rol_de_Procedimentos.csv"
 zip_file = "Teste_2_csv.zip"  # Substitua pelo seu nome
 
@@ -17,25 +17,23 @@ substituicoes = {
 # Função para extrair e processar os dados
 def extrair_dados():
     dados_extraidos = []
+    primeira_linha = True  # Flag para controlar se é a primeira linha a ser extraída
     with pdfplumber.open(pdf_file) as pdf:
-        # Tenta extrair a tabela da primeira página
-        tabelas = pdf.pages[0].extract_tables()
-
-        if tabelas:  # Verifica se existe alguma tabela
-            for tabela in tabelas:
-                if tabela:  # Garante que a tabela não está vazia
-                    for linha in tabela:
-                        linha_limpa = [str(celula).strip() if celula is not None else "" for celula in linha]
-                        dados_extraidos.append(linha_limpa)
-
-        # Processa as tabelas a partir da terceira página
-        for i in range(2, len(pdf.pages)):  # A partir da terceira página (índice 2)
+        # Processa todas as páginas
+        for i in range(len(pdf.pages)):
             tabelas = pdf.pages[i].extract_tables()
-            for tabela in tabelas:
-                if tabela:  # Garante que a tabela não está vazia
-                    for linha in tabela:
-                        linha_limpa = [str(celula).strip() if celula is not None else "" for celula in linha]
-                        dados_extraidos.append(linha_limpa)
+            if tabelas:  # Verifica se existe alguma tabela
+                for tabela in tabelas:
+                    if tabela:  # Garante que a tabela não está vazia
+                        if primeira_linha:  # Primeira vez que encontra a tabela
+                            for linha in tabela:
+                                linha_limpa = [str(celula).strip() if celula is not None else "" for celula in linha]
+                                dados_extraidos.append(linha_limpa)
+                            primeira_linha = False  # Depois de processar a primeira linha, não entra mais nesse bloco
+                        else:  # Para as próximas tabelas, pega a partir da segunda linha
+                            for linha in tabela[1:]:  # Ignora a primeira linha da tabela
+                                linha_limpa = [str(celula).strip() if celula is not None else "" for celula in linha]
+                                dados_extraidos.append(linha_limpa)
 
     return dados_extraidos
 
