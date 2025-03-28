@@ -19,3 +19,6 @@ Os códigos criados nesse teste foram:
 
 Antes de inserir os dados nas tabelas do MySql, foi executado o arquivo com os scripts de criação das tabelas, por nome **teste_3_create_tables**, criando as tabelas em um schema já criado manualmente.
 Após isso, foram criadas as consultas num arquivo para o MySql por nome **teste_3_consultas**, que buscam as informações desejadas.
+
+## Teste 4
+Possivelmente, não irei conseguir finalizar o teste 4, pois estou com algumas demandas para os próximos dias.
